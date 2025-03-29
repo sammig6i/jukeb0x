@@ -4,11 +4,12 @@
 #include <iostream>
 #include <yaml-cpp/yaml.h>
 
-std::unique_ptr<SQLite::Database> NewSQLiteClient(int flags) {
+std::unique_ptr<SQLite::Database> NewSQLiteClient(const YAML::Node &config,
+                                                  int flags) {
   try {
-    // TODO update to follow the GetDBPath function and work with the
+
     // config.yaml file
-    std::string dbPath = GetDBPath();
+    std::string dbPath = GetDBPath(config);
 
     std::filesystem::path path = dbPath;
 
@@ -58,7 +59,7 @@ std::string GetDBPath(const YAML::Node &config) {
   try {
     if (config["database"] && config["database"]["path"] &&
         !config["database"]["path"].IsNull()) {
-      std::string configPath = config["databe"]["path"].as<std::string>();
+      std::string configPath = config["database"]["path"].as<std::string>();
       std::cout << "Using db path from config file: " << configPath
                 << std::endl;
       return configPath;

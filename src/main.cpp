@@ -2,16 +2,17 @@
 #include <SQLiteCpp/SQLiteCpp.h>
 #include <iostream>
 #include <stdlib.h>
+#include <yaml-cpp/yaml.h>
 
 int main(int argc, char **argv) {
   std::unique_ptr<SQLite::Database> db;
+  YAML::Node config = YAML::LoadFile("config.yaml");
 
   try {
-    db = NewSQLiteClient();
+    db = NewSQLiteClient(config);
     std::cout << "DB init sucessful" << std::endl;
 
-    std::string actual_path = GetDBPath();
-    std::cout << "Database file located at: " << actual_path << std::endl;
+    std::cout << "Database file located at: " << db->getFilename() << std::endl;
 
     if (db) {
       std::cout << "Databse connection pointer is valid." << std::endl;
