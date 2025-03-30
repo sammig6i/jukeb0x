@@ -11,7 +11,8 @@ find_package(yaml-cpp CONFIG REQUIRED)
 
 add_executable(jukeb0x 
     src/main.cpp 
-    src/db.cpp
+    src/database/db.cpp
+    src/database/sqlite.cpp
 )
 
 target_include_directories(jukeb0x PRIVATE

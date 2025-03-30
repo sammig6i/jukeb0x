@@ -1,23 +1,15 @@
-#include "db.h"
+#include "database/sqlite.h"
 #include <SQLiteCpp/SQLiteCpp.h>
 #include <cstdlib>
 #include <iostream>
 #include <yaml-cpp/yaml.h>
 
-std::unique_ptr<SQLite::Database> NewSQLiteClient(const YAML::Node &config,
-                                                  int flags) {
+std::unique_ptr<SQLite::Database>
+NewSQLiteClient(const std::string &dataSourceName) {
   try {
 
-    // config.yaml file
-    std::string dbPath = GetDBPath(config);
-
-    std::filesystem::path path = dbPath;
-
-    if (path.has_parent_path()) {
-      std::filesystem::create_directories(path.parent_path());
-    }
-
-    auto db_ptr = std::make_unique<SQLite::Database>(path.string(), flags);
+    auto db_ptr = std::make_unique<SQLite::Database>(
+        dataSourceName, SQLite::OPEN_READWRITE | SQLite::OPEN_CREATE);
 
     CreateTables(db_ptr);
 
@@ -53,23 +45,4 @@ void CreateTables(std::unique_ptr<SQLite::Database> &db) {
               << std::endl;
     throw;
   }
-}
-
-std::string GetDBPath(const YAML::Node &config) {
-  try {
-    if (config["database"] && config["database"]["path"] &&
-        !config["database"]["path"].IsNull()) {
-      std::string configPath = config["database"]["path"].as<std::string>();
-      std::cout << "Using db path from config file: " << configPath
-                << std::endl;
-      return configPath;
-    }
-  } catch (const YAML::Exception &e) {
-    std::cerr << "Error acessing db path in config.yaml: " << e.what()
-              << std::endl;
-  }
-  std::string defaultPath = "data/music.db";
-  std::cout << "Using default db path: " << defaultPath << std::endl;
-
-  return defaultPath;
 }
