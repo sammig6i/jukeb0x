@@ -3,7 +3,7 @@
 
 #include <memory>
 
-// TODO: update with postgres for future
+// TODO: update with postgres option in the future
 enum class TypeDB { sqlite, postgres, unknown };
 
 namespace SQLite {

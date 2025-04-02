@@ -1,6 +1,6 @@
 build/
 test_data/
-
+*.txt
 
 CMakeCache.txt
 CMakeFiles/
