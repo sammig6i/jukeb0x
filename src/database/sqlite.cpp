@@ -25,14 +25,23 @@ void CreateTables(std::unique_ptr<SQLite::Database> &db) {
     throw std::runtime_error("Database pointer is null");
   }
 
-  SQLite::Statement songsTable(*db, "CREATE TABLE IF NOT EXISTS songs ("
+  SQLite::Statement songsTable(
+      *db, "CREATE TABLE IF NOT EXISTS songs ("
+           "song_id INTEGER PRIMARY KEY AUTOINCREMENT, "
+           "original_filepath TEXT NOT NULL UNIQUE, "
+           "processed_filepath TEXT, "
+           "processing_status TEXT NOT NULL DEFAULT 'NEW',"
+           // --Tracks workflow state('NEW', 'CONVERTED', 'SPECTROGRAM_PENDING',
+           //                         'SPECTROGRAM_DONE', 'ERROR_CONVERSION',
+           //                         'ERROR_SPECTROGRAM')
 
-                                    "title TEXT NOT NULL, "
-                                    "artist TEXT NOT NULL, "
-                                    "ytID TEXT, "
-                                    "key TEXT NOT NULL UNIQUE, "
-                                    "spectrogram BLOB"
-                                    ")");
+           "last_processed_timestamp INTEGER, " // --Unix timestamp of last
+                                                // processing action
+           "title TEXT NOT NULL, "
+           "artist TEXT NOT NULL, "
+           "ytID TEXT, "
+           "mel_spectrogram BLOB"
+           ")");
 
   try {
     songsTable.exec();

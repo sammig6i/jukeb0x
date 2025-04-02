@@ -34,10 +34,12 @@ std::unique_ptr<SQLite::Database> NewDBClient() {
   }
 
   TypeDB typeDB = hashString(typeDB_str);
+  std::string databasePath;
 
   switch (typeDB) {
   case TypeDB::sqlite:
-    return NewSQLiteClient("music.db");
+    databasePath = config["database"]["path"].as<std::string>();
+    return NewSQLiteClient(databasePath);
     break;
 
   default:

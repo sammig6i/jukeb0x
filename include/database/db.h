@@ -3,14 +3,11 @@
 
 #include <memory>
 
+// TODO: update with postgres for future
 enum class TypeDB { sqlite, postgres, unknown };
 
 namespace SQLite {
 class Database;
-};
-
-namespace YAML {
-class Node;
 };
 
 TypeDB hashString(const std::string &typeDB);
