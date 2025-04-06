@@ -20,10 +20,7 @@ int main(int argc, char **argv) {
     return EXIT_FAILURE;
   }
 
-  // TODO: implement rest of logic to convert files to .wav and make entries
-  // into database with processing_status = "NEW"
-
-  // TODO: START
+  // TODO: use million songs subset data for songs
   YAML::Node config = YAML::LoadFile("config.yaml");
   std::unordered_set<std::string> extSet{".mp3", ".flac", ".m4a",
                                          ".ogg", ".wav",  ".webm"};
@@ -59,7 +56,6 @@ int main(int argc, char **argv) {
     std::cout << "# of wav files: " << numWavFiles << std::endl;
     std::cout << "# NOT wav files: " << notWavFiles << std::endl;
   }
-  // TODO: END
 
   return EXIT_SUCCESS;
 }
