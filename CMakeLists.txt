@@ -11,6 +11,7 @@ include(SourcesAndHeaders)
 find_package(SQLiteCpp CONFIG REQUIRED)
 find_package(unofficial-sqlite3 CONFIG REQUIRED)
 find_package(yaml-cpp CONFIG REQUIRED)
+find_package(nlohmann_json CONFIG REQUIRED)
 
 string(TOUPPER ${PROJECT_NAME} PROJECT_NAME_UPPERCASE)
 configure_file(
@@ -30,6 +31,7 @@ target_link_libraries(jukeb0x PRIVATE
     yaml-cpp::yaml-cpp
     SQLiteCpp
     unofficial::sqlite3::sqlite3
+    nlohmann_json::nlohmann_json
 )
 
 set_project_warnings(jukeb0x) # Call *after* add_executable

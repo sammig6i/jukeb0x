@@ -9,10 +9,10 @@ namespace fs = std::filesystem;
 
 std::string CONFIG_PATH = "config.yaml";
 
-int main(int argc, char **argv) {
+int main() {
   std::unique_ptr<SQLite::Database> db;
   try {
-    db = NewDBClient();
+    db = db::NewDBClient();
     if (db != nullptr) {
       std::cout << "DB COnnection success: " << db->getFilename() << std::endl;
     }
@@ -26,12 +26,12 @@ int main(int argc, char **argv) {
   fs::path dir("test_data/audio_source/");
 
   std::cout << "File" << std::endl;
-  save(file);
+  utils::save(file);
 
   std::cout << std::endl;
 
   std::cout << "Directory" << std::endl;
-  save(dir);
+  utils::save(dir);
 
   return EXIT_SUCCESS;
 }

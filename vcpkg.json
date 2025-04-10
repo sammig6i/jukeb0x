@@ -1,7 +1,5 @@
 {
-  "dependencies": [
-    "sqlite3",
-    "sqlitecpp",
-    "yaml-cpp"
-  ]
+  "name": "jukeb0x",
+  "version-string": "0.1.0",
+  "dependencies": ["sqlite3", "sqlitecpp", "yaml-cpp", "nlohmann-json"]
 }

@@ -1,8 +1,11 @@
 #include <filesystem>
 #include <iostream>
 #include <jukeb0x/utils/utils.h>
+#include <jukeb0x/wav/wav.h>
 #include <string>
 namespace fs = std::filesystem;
+
+namespace utils {
 
 void save(const std::string &filePath) {
   std::error_code ec;
@@ -63,5 +66,9 @@ void saveSong(const std::string &filePath) {
   * move the new wav file to the processed songs directory
 
   */
+  wav::MediaProbeInfo metadata = wav::GetMetadata(filePath);
+
   std::cout << "Saving song: " << filePath << std::endl;
 }
+
+} // namespace utils

@@ -4,6 +4,8 @@
 #include <jukeb0x/database/sqlite.h>
 #include <yaml-cpp/yaml.h>
 
+namespace db {
+
 TypeDB hashString(const std::string &typeDB) {
   if (typeDB == "sqlite")
     return TypeDB::sqlite;
@@ -47,3 +49,5 @@ std::unique_ptr<SQLite::Database> NewDBClient() {
     return nullptr;
   }
 }
+
+} // namespace db
