@@ -1,9 +1,9 @@
-#include "database/db.h"
-#include "utils/utils.h"
 #include <SQLiteCpp/SQLiteCpp.h>
 #include <cstdlib>
 #include <filesystem>
 #include <iostream>
+#include <jukeb0x/database/db.h>
+#include <jukeb0x/utils/utils.h>
 #include <yaml-cpp/yaml.h>
 namespace fs = std::filesystem;
 

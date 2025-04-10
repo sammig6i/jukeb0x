@@ -1,7 +1,7 @@
-#include "database/sqlite.h"
 #include <SQLiteCpp/SQLiteCpp.h>
 #include <cstdlib>
 #include <iostream>
+#include <jukeb0x/database/sqlite.h>
 #include <yaml-cpp/yaml.h>
 
 std::unique_ptr<SQLite::Database>

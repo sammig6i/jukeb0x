@@ -1,0 +1,21 @@
+MP3
+[x] https://www.youtube.com/playlist?list=PLd13klUjHhPeDypM3opjDXu2RMRsGgUFT
+[x] https://www.youtube.com/playlist?list=PLzID22G7KkdRuPmAw9df0bZQQf2eUlFjt
+[x] https://www.youtube.com/playlist?list=PLICs4fUEr_zd-XvNsMPmau9a3xVDIV98G
+[x] https://www.youtube.com/playlist?list=PLrf35RHMu9VuBjEOoGT_5mJN_jFlBqCSl
+
+WAV 
+[x] https://www.youtube.com/playlist?list=PL0kNWD0XZExeHWo5PUDC1GFdtY8Mpvnyt
+[x] https://www.youtube.com/playlist?list=PLGBuKfnErZlAq0H6P6doTx1EiUP5L_Q3-
+
+FLAC
+[x] https://www.youtube.com/playlist?list=PLBA986EF6C0FAA1D9
+[x] https://www.youtube.com/playlist?list=PLq7Mvbpi6dNPdvCp2B1__cc5wqg8HibhI
+
+M4A
+[] https://www.youtube.com/playlist?list=PLBD5pRttJ7N0vCfh4NpEg7Vw47hfeCxuE
+[] https://www.youtube.com/playlist?list=PLkqz3S84Tw-RaMU4-EM6uJ5jfGLRVdIae
+
+OGG
+[] https://www.youtube.com/playlist?list=PL8F6B0753B2CCA128
+[] https://www.youtube.com/playlist?list=PLJYyuMTDI-idzy2eKxq16k5_RKD3odJ-a

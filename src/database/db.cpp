@@ -1,7 +1,7 @@
-#include "database/db.h"
-#include "database/sqlite.h"
 #include <SQLiteCpp/SQLiteCpp.h>
 #include <iostream>
+#include <jukeb0x/database/db.h>
+#include <jukeb0x/database/sqlite.h>
 #include <yaml-cpp/yaml.h>
 
 TypeDB hashString(const std::string &typeDB) {

@@ -1,0 +1,6 @@
+database:
+  type: "sqlite"
+  path: /home/mach5/Documents/projects/jukeb0x/music.db
+
+scan_directories:
+  - /home/mach5/Documents/projects/jukeb0x/test_data/audio_source/
