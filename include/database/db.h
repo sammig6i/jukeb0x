@@ -1,5 +1,4 @@
-#ifndef DATABASE_H
-#define DATABASE_H
+#pragma once
 
 #include <memory>
 
@@ -12,5 +11,3 @@ class Database;
 
 TypeDB hashString(const std::string &typeDB);
 std::unique_ptr<SQLite::Database> NewDBClient();
-
-#endif

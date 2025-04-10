@@ -13,6 +13,7 @@ add_executable(jukeb0x
     src/main.cpp 
     src/database/db.cpp
     src/database/sqlite.cpp
+    src/utils/utils.cpp
 )
 
 target_include_directories(jukeb0x PRIVATE
