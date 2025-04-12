@@ -1,16 +1,21 @@
+#include <jukeb0x/utils/utils.h>
 #include <jukeb0x/wav/wav.h>
+#include <nlohmann/json.hpp>
+using json = nlohmann::json;
 
 namespace wav {
 
+// TODO: error handling for json inputs since these will be provided by users
 MediaProbeInfo GetMetadata(const std::string &filePath) {
   MediaProbeInfo metadata;
-  /*
-   * TODO:
-   * run ffprobe command to get the metadata of the file
-   * map the metadata to the MediaProbeInfo data struct
-   * change all keys in the tages for FormatInfo and StreamInfo[0] to lowercase
-   * return the metadata
-   */
+
+  std::string cmd =
+      "ffprobe -v quiet -print_format json -show_format -show_streams " +
+      filePath;
+
+  std::string ffprobe = utils::exec(cmd.c_str());
+  json j = json::parse(ffprobe);
+  metadata = j.template get<wav::MediaProbeInfo>();
 
   return metadata;
 }
