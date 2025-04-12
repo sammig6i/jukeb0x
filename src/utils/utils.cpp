@@ -78,27 +78,32 @@ void save(const std::string &filePath) {
 
 void saveSong(const std::string &filePath) {
   /*
-  * TODO: handle converting, saving and processing the song in .wav format
-  * 1. get metadata from file using ffprobe
-  * 2. Save metadata for Title, Artist and Album to a track data type
-  * 3. get the Youtube ID of the audio file
-  * process the file by creating the mel spectrogram operations then store the
-  * spectrogram to the database
-  * move the new wav file to the processed songs directory
+   * TODO: handle converting, saving and processing the song in .wav format
+   * 1. get metadata from file using ffprobe
+   * 2. Save metadata for Title, Artist and Album to a track data type
+   * 3. get the Youtube ID of the audio file
+   * process the file by creating the mel spectrogram operations then store the
+   * spectrogram to the database
+   * move the new wav file to the processed songs directory
+   */
 
-  */
-  // add single quote since input file paths can contain invalid characters for
-  // command line arg
   std::string inputFilePath = "'" + filePath + "'";
   wav::MediaProbeInfo metadata = wav::GetMetadata(inputFilePath);
 
+  try {
+    float duration = std::stof(metadata.format.duration);
+  } catch (std::exception &e) {
+    std::cout << e.what() << std::endl;
+  }
+
+  /*
   for (const auto &stream : metadata.streams) {
     std::cout << "Stream Index: " << stream.index << std::endl;
     std::cout << "Codec Name: " << stream.codec_name << std::endl;
     std::cout << "Sample Rate: " << stream.sample_rate << std::endl;
     std::cout << "Tags: " << std::endl;
     for (const auto &pair : stream.tags) {
-      std::cout << pair.first << ": " << pair.second << std::endl;
+      std::cout << "     " << pair.first << ": " << pair.second << std::endl;
     }
 
     std::cout << "-----------" << std::endl;
@@ -114,6 +119,7 @@ void saveSong(const std::string &filePath) {
   std::cout << "Album: " << tags["album"] << std::endl;
 
   std::cout << "--------END--------" << std::endl;
+  */
 }
 
 } // namespace utils
