@@ -1,6 +1,7 @@
 #include <array>
 #include <filesystem>
 #include <iostream>
+#include <jukeb0x/music/music.h>
 #include <jukeb0x/utils/utils.h>
 #include <jukeb0x/wav/wav.h>
 #include <string>
@@ -90,36 +91,28 @@ void saveSong(const std::string &filePath) {
   std::string inputFilePath = "'" + filePath + "'";
   wav::MediaProbeInfo metadata = wav::GetMetadata(inputFilePath);
 
+  float duration = 0.0f;
   try {
-    float duration = std::stof(metadata.format.duration);
+    duration = std::stof(metadata.format.duration);
   } catch (std::exception &e) {
     std::cout << e.what() << std::endl;
   }
 
-  /*
-  for (const auto &stream : metadata.streams) {
-    std::cout << "Stream Index: " << stream.index << std::endl;
-    std::cout << "Codec Name: " << stream.codec_name << std::endl;
-    std::cout << "Sample Rate: " << stream.sample_rate << std::endl;
-    std::cout << "Tags: " << std::endl;
-    for (const auto &pair : stream.tags) {
-      std::cout << "     " << pair.first << ": " << pair.second << std::endl;
-    }
+  const auto &tags = metadata.format.tags;
+  auto title = tags.find("title");
+  auto artist = tags.find("artist");
+  auto album = tags.find("album");
 
-    std::cout << "-----------" << std::endl;
-  }
+  music::Track track = {(title != tags.end() ? title->second : ""),
+                        (artist != tags.end() ? artist->second : ""),
+                        {},
+                        (album != tags.end() ? album->second : ""),
+                        static_cast<int>(duration)};
 
-  std::cout << "Format Info" << std::endl;
-  std::cout << "File Name: " << metadata.format.filename << std::endl;
-  std::cout << "Duration: " << metadata.format.duration << std::endl;
-
-  std::map<std::string, std::string> tags = metadata.format.tags;
-  std::cout << "Artist: " << tags["artist"] << std::endl;
-  std::cout << "Title: " << tags["title"] << std::endl;
-  std::cout << "Album: " << tags["album"] << std::endl;
-
-  std::cout << "--------END--------" << std::endl;
-  */
+  std::cout << "Title: " << track.title << std::endl;
+  std::cout << "Artist: " << track.artist << std::endl;
+  std::cout << "Album: " << track.album << std::endl;
+  std::cout << "Duration: " << track.duration << std::endl;
 }
 
 } // namespace utils
