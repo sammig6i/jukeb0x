@@ -113,6 +113,8 @@ void saveSong(const std::string &filePath) {
   std::cout << "Artist: " << track.artist << std::endl;
   std::cout << "Album: " << track.album << std::endl;
   std::cout << "Duration: " << track.duration << std::endl;
+
+  music::GetYoutubeID(track);
 }
 
 } // namespace utils

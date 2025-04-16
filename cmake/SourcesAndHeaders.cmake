@@ -4,6 +4,7 @@ set(jukebox_lib_sources
     src/database/sqlite.cpp
     src/utils/utils.cpp
     src/wav/wav.cpp
+    src/music/music.cpp
 )
 
 # All source files for the executable target
@@ -18,6 +19,7 @@ set(jukebox_headers
     include/jukebox/database/sqlite.h
     include/jukebox/utils/utils.h
     include/jukebox/wav/wav.h
+    include/jukebox/music/music.h
     # Add include/jukebox/version.h here if you want it listed,
     # but it's generated, so not strictly necessary to list.
 )
