@@ -90,7 +90,6 @@ void saveSong(const std::string &filePath) {
 
   std::string inputFilePath = "'" + filePath + "'";
   wav::MediaProbeInfo metadata = wav::GetMetadata(inputFilePath);
-
   float duration = 0.0f;
   try {
     duration = std::stof(metadata.format.duration);
@@ -114,7 +113,8 @@ void saveSong(const std::string &filePath) {
   std::cout << "Album: " << track.album << std::endl;
   std::cout << "Duration: " << track.duration << std::endl;
 
-  music::GetYoutubeID(track);
+  std::string ytID = music::GetYoutubeID(track);
+  std::cout << "Youtube ID: " << ytID << std::endl;
 }
 
 } // namespace utils

@@ -5,6 +5,7 @@ CMakeFiles/*
 [Tt]esting/*
 test_data/
 vcpkg_installed/
+.gdb_history
 
 ### VisualStudioCode ###
 .vscode/*

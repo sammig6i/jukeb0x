@@ -7,7 +7,6 @@
 #include <yaml-cpp/yaml.h>
 namespace fs = std::filesystem;
 
-// TODO: make tests for code written so far
 std::string CONFIG_PATH = "config.yaml";
 
 int main() {
